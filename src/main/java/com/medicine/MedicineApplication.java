@@ -11,6 +11,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class MedicineApplication {
 
     public static void main(String[] args) {
+
         SpringApplication.run(MedicineApplication.class, args);
     }
 
