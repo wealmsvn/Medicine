@@ -4,7 +4,41 @@
 
 
     <select id="selectBookByTypeId" resultType="com.medicine.vo.RBooks">
-        select b.id,b.name,b.author,b.book_des,b.cover_img,b.level_id,b.book_type_id  from medicine.qc_books b inner join medicine.qc_books_type t
+        select b.id,b.name,b.author,b.book_des,b.cover_img,b.level_id,b.book_type_id
+        from medicine.qc_books b inner join medicine.qc_books_type t
         where b.book_type_id =#{bookTypeId} and b.level_id=#{levelId} and b.book_type_id=t.id and b.level_id = t.level;
     </select>
+
+
+    <select id="selectAllBooks" resultType="com.medicine.vo.RBooks">
+       select b.id,b.name,b.author,b.book_des,b.cover_img,b.level_id,b.book_type_id
+       from medicine.qc_books b , medicine.qc_books_type t
+       where b.book_type_id=t.id and b.level_id = t.level;
+    </select>
+
+    <select id="selectAllBooksByLevel" resultType="com.medicine.vo.RBooks">
+
+       select b.id,b.name,b.author,b.book_des,b.cover_img,b.level_id,b.book_type_id
+       from medicine.qc_books b , medicine.qc_books_type t
+       where b.book_type_id=t.id and b.level_id = t.level and b.level_id =#{level};
+
+    </select>
+
+
+    <select id="selectBookhot" resultType="com.medicine.vo.RBooks">
+        select b.id,b.name,b.author,b.book_des,b.cover_img,b.level_id,b.book_type_id
+        from medicine.qc_books b inner join medicine.qc_books_type t
+        where b.book_type_id =#{bookTypeId} and b.level_id=#{levelId} and b.book_type_id=t.id and b.level_id = t.level
+        order by b.create_date desc;
+    </select>
+
+    <select id="selectListType" resultType="com.medicine.vo.ExamBook">
+        select id,title,title_img,author,flag from medicine.cms_content where flag=#{flag}
+    </select>
+
+    <select id="selectHotExamBook" resultType="com.medicine.vo.ExamBook">
+        select id,title,title_img,author,flag from medicine.cms_content where flag=#{flag}
+        order by create_date desc;
+    </select>
+
 </mapper>

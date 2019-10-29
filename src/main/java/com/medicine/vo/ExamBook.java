@@ -5,16 +5,13 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+@TableName("cms_content")
 @Data
-@TableName("qc_books")
-public class RBooks {
+public class ExamBook {
     @TableId(type = IdType.AUTO)
     private int id;
-    private int bookTypeId;
-    private int levelId;
-    private String name;
-    private String bookDes;
-    private String coverImg;
+    private String title;
     private String author;
-
+    private int flag;
+    private  String titleImg;
 }

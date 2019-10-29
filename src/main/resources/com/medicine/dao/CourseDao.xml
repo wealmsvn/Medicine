@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.medicine.dao.CourseDao">
+
+
+<select id="selectAllCourse"  resultType="com.medicine.bean.Course">
+   select t.id,t.name,t.course,t.course_img,t.course_des,s.identifier
+   from medicine.qc_teachers t,medicine.qc_school s
+   where t.college_id = s.identifier
+</select>
+
+    <select id="selectCourse" resultType="com.medicine.bean.Course">
+   select t.id,t.name,t.course,t.course_img,t.course_des,s.identifier
+   from medicine.qc_teachers t,medicine.qc_school s
+   where t.college_id = s.identifier and t.level_id = #{levelId}
+</select>
+
+
+
+</mapper>

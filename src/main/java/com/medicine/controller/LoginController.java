@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Api(tags = "用户登陆")
 @RestController
-public class UserController {
+public class LoginController {
 
     @Autowired
     private UserService userService;

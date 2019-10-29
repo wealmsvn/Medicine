@@ -1,20 +1,22 @@
-package com.medicine.vo;
+package com.medicine.bean;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+@TableName("qc_teachers")
 @Data
-@TableName("qc_books")
-public class RBooks {
+public class Course  {
+
     @TableId(type = IdType.AUTO)
     private int id;
-    private int bookTypeId;
-    private int levelId;
     private String name;
-    private String bookDes;
-    private String coverImg;
-    private String author;
+    private String collegeId;
+    private String course;
+    private String courseDes;
+    private String courseImg;
+    private String identifier;
+
 
 }
