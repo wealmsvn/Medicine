@@ -1,6 +1,7 @@
 package com.medicine.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+<<<<<<< HEAD
 import com.medicine.bean.*;
 import org.springframework.stereotype.Repository;
 
@@ -31,4 +32,11 @@ public interface UserDao extends BaseMapper<User> {
     int validPassword(User user);
 
     int updatePassword(User user);
+=======
+import com.medicine.bean.User;
+import com.medicine.vo.UserLogin;
+
+public interface UserDao extends BaseMapper<User> {
+   int  selectUser(UserLogin user);
+>>>>>>> github/master
 }

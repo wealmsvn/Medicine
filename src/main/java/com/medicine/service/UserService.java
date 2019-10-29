@@ -1,5 +1,6 @@
 package com.medicine.service;
 
+<<<<<<< HEAD
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.medicine.bean.*;
@@ -25,4 +26,12 @@ public interface UserService extends IService<User> {
     int validPassword(User user);
 
     int updatePassword(User user);
+=======
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.medicine.bean.User;
+import com.medicine.vo.UserLogin;
+
+public interface UserService extends IService<User> {
+    Object queryUserName(UserLogin user);
+>>>>>>> github/master
 }

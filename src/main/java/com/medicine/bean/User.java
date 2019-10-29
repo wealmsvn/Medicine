@@ -6,10 +6,19 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.util.Date;
+<<<<<<< HEAD
 @Data
 @TableName("qc_user")
 public class User {
     @TableId(type = IdType.AUTO)
+=======
+
+@Data
+@TableName("qc_user")
+public class User {
+
+    @TableId(type = IdType.AUTO )
+>>>>>>> github/master
     private String id;
 
     private Date createDate;
@@ -53,6 +62,10 @@ public class User {
     private String introduction;
 
     private String wechatOpenid;
+<<<<<<< HEAD
 
 
 }
+=======
+}
+>>>>>>> github/master
