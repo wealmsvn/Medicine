@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.medicine.dao.UserDao">
+    <resultMap id="UserMap" type="com.medicine.bean.User">
+        <result column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="create_date" jdbcType="TIMESTAMP" property="createDate"/>
+        <result column="login_name" jdbcType="VARCHAR" property="loginName"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="mobile" jdbcType="VARCHAR" property="mobile"/>
+        <result column="mobile_auth" jdbcType="INTEGER" property="mobileAuth"/>
+        <result column="photo" jdbcType="VARCHAR" property="photo"/>
+        <result column="login_ip" jdbcType="VARCHAR" property="loginIp"/>
+        <result column="login_time" jdbcType="TIMESTAMP" property="loginTime"/>
+        <result column="login_count" jdbcType="INTEGER" property="loginCount"/>
+        <result column="last_login_ip" jdbcType="VARCHAR" property="lastLoginIp"/>
+        <result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime"/>
+        <result column="remarks" jdbcType="VARCHAR" property="remarks"/>
+        <result column="user_type" jdbcType="INTEGER" property="userType"/>
+        <result column="school_id" jdbcType="VARCHAR" property="schoolId"/>
+        <result column="nickname" jdbcType="VARCHAR" property="nickname"/>
+        <result column="sex" jdbcType="INTEGER" property="sex"/>
+        <result column="birthday" jdbcType="TIMESTAMP" property="birthday"/>
+        <result column="occupation" jdbcType="VARCHAR" property="occupation"/>
+        <result column="introduction" jdbcType="VARCHAR" property="introduction"/>
+        <result column="wechat_openid" jdbcType="VARCHAR" property="wechatOpenid"/>
+    </resultMap>
+    <select id="selectOneUserById" parameterType="int" resultMap="UserMap">
+       select * from qc_user where id =#{id}
+    </select>
+    <update id="updateUserInfo" parameterType="com.medicine.bean.User">
+        update qc_user set mobile=#{mobile},nickname=#{nickname},name=#{name},birthday=#{birthday},sex=#{sex},school_id=#{schoolId},introduction=#{introduction}
+    </update>
+    <update id="updatePhoto" parameterType="map">
+      update qc_user set photo=#{photo} where id=#{id}
+    </update>
+    <select id="selectUserStudyHistory" parameterType="string" resultType="com.medicine.bean.UserStudyHistory">
+     select s.* from user_study_history s inner join qc_user u on s.uid= u.id where mobile=#{phoneNum}
+    </select>
+
+    <select id="selectSchoolName" resultType="com.medicine.bean.SchoolInfo">
+        select * from qc_school;
+    </select>
+
+    <insert id="applyTeacher" parameterType="com.medicine.bean.Teacher">
+        insert into teachers (name,school_id,department,id_card,professional_id,course,teacher_card_id) values (#{name},#{schoolId},#{department},#{idCard},#{professionalId},#{Course},#{teacherCardId});
+    </insert>
+
+    <select id="selectselectProfessionalName" resultType="com.medicine.bean.Professional">
+        select * from qc_professional;
+    </select>
+
+    <select id="validPassword" parameterType="com.medicine.bean.User" resultType="int">
+        select count(1) from qc_user where mobile=#{mobile} and password=#{password}
+    </select>
+    <update id="updatePassword" parameterType="com.medicine.bean.User">
+        update qc_user set password=#{password} where mobile=#{mobile}
+    </update>
+</mapper>

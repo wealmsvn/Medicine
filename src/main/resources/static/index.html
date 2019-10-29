@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script>
+
+        function ppp(){
+            var formData=new FormData();
+            formData.append('name',$('#name').val())
+            formData.append('file',$('#file')[0].files[0])
+
+            $.ajax({
+                url:"user/applyTeacher",
+                type:'get',
+                data:formData,
+            success:function(){
+                alert("上传成功！")
+            },
+            error:function(){
+                alert("失败")
+            }
+        })
+        }
+
+
+    </script>
+</head>
+
+<body>
+<form >
+
+    <input type="text" id="name" name="name"/><br>
+    <input type="file" id="file"  name = "file"/><br>
+    <input type="button" onclick="ppp()" value="提交"/>
+</form>
+</body>
+</html>
